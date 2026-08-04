@@ -28,6 +28,7 @@
 "settings.default_apps.description" = "모든 프로파일에서 열어 둘 앱을 선택하십시오. 목록에는 이 Mac에서 찾은 앱이 포함됩니다.";
 "settings.default_apps.search" = "앱 검색";
 "settings.default_apps.empty" = "검색과 일치하는 앱이 없습니다.";
+"settings.default_apps.selected" = "선택한 앱";
 "settings.default_apps.additional.label" = "추가 앱";
 "settings.default_apps.additional.description" = "목록에 없는 앱은 이름 또는 번들 식별자를 쉼표로 구분하여 입력하십시오.";
 "settings.behavior.section" = "동작";

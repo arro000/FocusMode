@@ -28,6 +28,7 @@
 "settings.default_apps.description" = "すべてのプロファイルで開いたままにするアプリケーションを選択します。このリストにはこの Mac で見つかったアプリケーションが含まれます。";
 "settings.default_apps.search" = "アプリケーションを検索";
 "settings.default_apps.empty" = "検索に一致するアプリケーションはありません。";
+"settings.default_apps.selected" = "選択したアプリケーション";
 "settings.default_apps.additional.label" = "追加のアプリケーション";
 "settings.default_apps.additional.description" = "一覧にないアプリケーションは、名前または Bundle 識別子をカンマ区切りで入力します。";
 "settings.behavior.section" = "動作";

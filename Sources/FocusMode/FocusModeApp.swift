@@ -452,33 +452,30 @@ private struct ApplicationChecklist: View {
 
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 2) {
-                    ForEach(filteredApplications) { application in
-                        Toggle(isOn: Binding(
-                            get: { isSelected(application) },
-                            set: { setSelected($0, application) }
-                        )) {
-                            HStack(spacing: 9) {
-                                Image(nsImage: ApplicationIconStore.shared.icon(for: application))
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 22, height: 22)
+                    if !selectedApplications.isEmpty {
+                        Text(L10n.string(
+                            "settings.default_apps.selected",
+                            defaultValue: "Selected applications"
+                        ))
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .padding(.top, 3)
 
-                                VStack(alignment: .leading, spacing: 1) {
-                                    Text(application.name)
-                                    if let bundleIdentifier = application.bundleIdentifier {
-                                        Text(bundleIdentifier)
-                                            .font(.caption2)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                }
-                            }
+                        ForEach(selectedEntries) { entry in
+                            applicationRow(for: entry.application)
                         }
-                        .toggleStyle(.checkbox)
-                        .disabled(isDisabled)
-                        .padding(.vertical, 3)
                     }
 
-                    if filteredApplications.isEmpty {
+                    if !selectedApplications.isEmpty && !unselectedApplications.isEmpty {
+                        Divider()
+                            .padding(.vertical, 5)
+                    }
+
+                    ForEach(unselectedEntries) { entry in
+                        applicationRow(for: entry.application)
+                    }
+
+                    if orderedApplications.isEmpty {
                         Text(L10n.string(
                             "settings.default_apps.empty",
                             defaultValue: "No applications match your search."
@@ -493,14 +490,69 @@ private struct ApplicationChecklist: View {
         }
     }
 
-    private var filteredApplications: [ProtectedApplication] {
-        let query = search.trimmingCharacters(in: .whitespacesAndNewlines)
-        let configurableApplications = applications.filter { !$0.isSystemApplication }
-        guard !query.isEmpty else { return configurableApplications }
-        return configurableApplications.filter {
-            $0.name.localizedCaseInsensitiveContains(query)
-                || $0.bundleIdentifier?.localizedCaseInsensitiveContains(query) == true
+    private func applicationRow(for application: ProtectedApplication) -> some View {
+        Toggle(isOn: Binding(
+            get: { isSelected(application) },
+            set: { setSelected($0, application) }
+        )) {
+            HStack(spacing: 9) {
+                Image(nsImage: ApplicationIconStore.shared.icon(for: application))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 22, height: 22)
+
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(application.name)
+                    if let bundleIdentifier = application.bundleIdentifier {
+                        Text(bundleIdentifier)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
         }
+        .toggleStyle(.checkbox)
+        .disabled(isDisabled)
+        .padding(.vertical, 3)
+    }
+
+    private var orderedApplications: [ProtectedApplication] {
+        applicationsForDisplay(applications, search: search, isSelected: isSelected)
+    }
+
+    private var selectedApplications: [ProtectedApplication] {
+        orderedApplications.filter(isSelected)
+    }
+
+    private var unselectedApplications: [ProtectedApplication] {
+        orderedApplications.filter { !isSelected($0) }
+    }
+
+    private var selectedEntries: [ApplicationChecklistEntry] {
+        selectedApplications.map {
+            ApplicationChecklistEntry(application: $0, group: .selected)
+        }
+    }
+
+    private var unselectedEntries: [ApplicationChecklistEntry] {
+        unselectedApplications.map {
+            ApplicationChecklistEntry(application: $0, group: .unselected)
+        }
+    }
+}
+
+private struct ApplicationChecklistEntry: Identifiable {
+    enum Group: String {
+        case selected
+        case unselected
+    }
+
+    let application: ProtectedApplication
+    let group: Group
+
+    // An app moving between groups must not reuse the old Toggle view state.
+    var id: String {
+        "\(group.rawValue):\(application.id)"
     }
 }
 

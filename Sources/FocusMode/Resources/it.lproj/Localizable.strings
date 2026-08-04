@@ -28,6 +28,7 @@
 "settings.default_apps.description" = "Scegli le applicazioni da lasciare aperte in ogni profilo. L'elenco include quelle rilevate su questo Mac.";
 "settings.default_apps.search" = "Cerca applicazioni";
 "settings.default_apps.empty" = "Nessuna applicazione corrisponde alla ricerca.";
+"settings.default_apps.selected" = "Applicazioni selezionate";
 "settings.default_apps.additional.label" = "Applicazioni aggiuntive";
 "settings.default_apps.additional.description" = "Per le applicazioni non presenti sopra, inserisci nomi o bundle identifier separati da virgole.";
 "settings.behavior.section" = "Comportamento";

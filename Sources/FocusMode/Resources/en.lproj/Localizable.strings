@@ -28,6 +28,7 @@
 "settings.default_apps.description" = "Choose the applications that should stay open in every profile. The list includes applications found on this Mac.";
 "settings.default_apps.search" = "Search applications";
 "settings.default_apps.empty" = "No applications match your search.";
+"settings.default_apps.selected" = "Selected applications";
 "settings.default_apps.additional.label" = "Additional applications";
 "settings.default_apps.additional.description" = "For applications not shown above, enter names or bundle identifiers separated by commas.";
 "settings.behavior.section" = "Behavior";

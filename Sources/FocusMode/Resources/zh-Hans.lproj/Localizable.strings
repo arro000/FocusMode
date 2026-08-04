@@ -28,6 +28,7 @@
 "settings.default_apps.description" = "选择在所有配置文件中保持打开的应用程序。列表包含在此 Mac 上找到的应用程序。";
 "settings.default_apps.search" = "搜索应用程序";
 "settings.default_apps.empty" = "没有符合搜索条件的应用程序。";
+"settings.default_apps.selected" = "已选择的应用程序";
 "settings.default_apps.additional.label" = "其他应用程序";
 "settings.default_apps.additional.description" = "对于列表中没有的应用程序，请输入名称或 Bundle 标识符，并用逗号分隔。";
 "settings.behavior.section" = "行为";

@@ -4,10 +4,25 @@ All notable changes to FocusMode will be documented here. The format follows [Ke
 
 ## [Unreleased]
 
+No changes yet.
+
+## [1.1.0] - 2026-08-04
+
+### Added
+
+- Added a complete open-source project presentation and contribution workflow.
+- Added XCTest coverage for application ordering, profiles, protections, localization, and persistence.
+
 ### Changed
 
 - Rebranded the application and package as FocusMode.
-- Added a complete open-source project presentation and contribution workflow.
+- Selected applications are grouped at the top of profile and default protection lists.
+- Added a visual separator and localized label for selected applications.
+- CI now runs the test suite with code coverage enabled.
+
+### Fixed
+
+- Prevented SwiftUI checklist rows from retaining a stale checked state when an application moves between selected and unselected groups.
 
 ## [1.0.0] - 2026-08-04
 

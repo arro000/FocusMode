@@ -13,6 +13,11 @@ let package = Package(
             name: "FocusMode",
             path: "Sources/FocusMode",
             resources: [.process("Resources")]
+        ),
+        .testTarget(
+            name: "FocusModeTests",
+            dependencies: ["FocusMode"],
+            path: "Tests/FocusModeTests"
         )
     ]
 )

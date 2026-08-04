@@ -23,3 +23,5 @@ jobs:
         run: plutil -lint App/Info.plist
       - name: Build release
         run: swift build --configuration release
+      - name: Run tests with coverage
+        run: swift test --enable-code-coverage

@@ -28,6 +28,7 @@
 "settings.default_apps.description" = "Wähle die Apps aus, die in jedem Profil geöffnet bleiben sollen. Die Liste enthält Apps, die auf diesem Mac gefunden wurden.";
 "settings.default_apps.search" = "Apps suchen";
 "settings.default_apps.empty" = "Keine Apps entsprechen der Suche.";
+"settings.default_apps.selected" = "Ausgewählte Apps";
 "settings.default_apps.additional.label" = "Zusätzliche Apps";
 "settings.default_apps.additional.description" = "Für nicht angezeigte Apps kannst du Namen oder Bundle-Identifier durch Kommas getrennt eingeben.";
 "settings.behavior.section" = "Verhalten";
