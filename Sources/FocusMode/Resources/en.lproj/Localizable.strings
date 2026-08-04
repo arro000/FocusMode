@@ -24,9 +24,15 @@
 "settings.profile.name.placeholder" = "Profile name";
 "settings.open_apps.label" = "Applications to keep open";
 "settings.open_apps.description" = "Enter app names or bundle identifiers separated by commas. Matching is case-insensitive.";
+"settings.default_apps.section" = "Default protected applications";
+"settings.default_apps.description" = "Choose the applications that should stay open in every profile. The list includes applications found on this Mac.";
+"settings.default_apps.search" = "Search applications";
+"settings.default_apps.empty" = "No applications match your search.";
+"settings.default_apps.additional.label" = "Additional applications";
+"settings.default_apps.additional.description" = "For applications not shown above, enter names or bundle identifiers separated by commas.";
 "settings.behavior.section" = "Behavior";
 "settings.behavior.description" = "Session mode politely quits user-interface apps not included in the list and reopens them when disabled. Clean up everything closes apps without retaining a session. Unsaved documents may prevent apps from closing.";
 "settings.protected.section" = "Always protected";
-"settings.protected.description" = "System processes, background agents, ESET, and FortiClient are never terminated.";
+"settings.protected.description" = "System processes and background agents are never terminated.";
 "profile.general" = "General";
 "profile.new" = "New profile";

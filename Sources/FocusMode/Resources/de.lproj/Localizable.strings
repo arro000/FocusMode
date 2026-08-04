@@ -24,9 +24,15 @@
 "settings.profile.name.placeholder" = "Profilname";
 "settings.open_apps.label" = "Geöffnete Apps beibehalten";
 "settings.open_apps.description" = "Gib App-Namen oder Bundle-Identifier durch Kommas getrennt ein. Groß- und Kleinschreibung wird ignoriert.";
+"settings.default_apps.section" = "Standardmäßig geschützte Apps";
+"settings.default_apps.description" = "Wähle die Apps aus, die in jedem Profil geöffnet bleiben sollen. Die Liste enthält Apps, die auf diesem Mac gefunden wurden.";
+"settings.default_apps.search" = "Apps suchen";
+"settings.default_apps.empty" = "Keine Apps entsprechen der Suche.";
+"settings.default_apps.additional.label" = "Zusätzliche Apps";
+"settings.default_apps.additional.description" = "Für nicht angezeigte Apps kannst du Namen oder Bundle-Identifier durch Kommas getrennt eingeben.";
 "settings.behavior.section" = "Verhalten";
 "settings.behavior.description" = "Der Sitzungsmodus beendet Apps mit Benutzeroberfläche, die nicht in der Liste stehen, ordnungsgemäß und öffnet sie beim Deaktivieren erneut. Alles bereinigen schließt Apps, ohne eine Sitzung zu speichern. Nicht gespeicherte Dokumente können das Schließen verhindern.";
 "settings.protected.section" = "Immer geschützt";
-"settings.protected.description" = "Systemprozesse, Hintergrundagenten, ESET und FortiClient werden nie beendet.";
+"settings.protected.description" = "Systemprozesse und Hintergrundagenten werden nie beendet.";
 "profile.general" = "Allgemein";
 "profile.new" = "Neues Profil";

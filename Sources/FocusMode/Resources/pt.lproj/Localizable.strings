@@ -24,9 +24,15 @@
 "settings.profile.name.placeholder" = "Nome do perfil";
 "settings.open_apps.label" = "Aplicações a manter abertas";
 "settings.open_apps.description" = "Introduza nomes de aplicações ou identificadores de bundle separados por vírgulas. A correspondência não diferencia maiúsculas de minúsculas.";
+"settings.default_apps.section" = "Aplicações protegidas por predefinição";
+"settings.default_apps.description" = "Escolha as aplicações que devem permanecer abertas em todos os perfis. A lista inclui aplicações encontradas neste Mac.";
+"settings.default_apps.search" = "Pesquisar aplicações";
+"settings.default_apps.empty" = "Nenhuma aplicação corresponde à pesquisa.";
+"settings.default_apps.additional.label" = "Aplicações adicionais";
+"settings.default_apps.additional.description" = "Para aplicações que não aparecem acima, introduza nomes ou identificadores de bundle separados por vírgulas.";
 "settings.behavior.section" = "Comportamento";
 "settings.behavior.description" = "O modo de sessão fecha ordenadamente as aplicações com interface de utilizador que não estejam na lista e volta a abri-las quando é desativado. Limpar tudo fecha as aplicações sem guardar uma sessão. Documentos não guardados podem impedir o fecho.";
 "settings.protected.section" = "Sempre protegidos";
-"settings.protected.description" = "Os processos do sistema, agentes em segundo plano, ESET e FortiClient nunca são terminados.";
+"settings.protected.description" = "Os processos do sistema e os agentes em segundo plano nunca são terminados.";
 "profile.general" = "Geral";
 "profile.new" = "Novo perfil";

@@ -24,9 +24,15 @@
 "settings.profile.name.placeholder" = "プロファイル名";
 "settings.open_apps.label" = "開いたままにするアプリケーション";
 "settings.open_apps.description" = "アプリケーション名または Bundle 識別子をカンマ区切りで入力します。大文字と小文字は区別されません。";
+"settings.default_apps.section" = "デフォルトで保護するアプリケーション";
+"settings.default_apps.description" = "すべてのプロファイルで開いたままにするアプリケーションを選択します。このリストにはこの Mac で見つかったアプリケーションが含まれます。";
+"settings.default_apps.search" = "アプリケーションを検索";
+"settings.default_apps.empty" = "検索に一致するアプリケーションはありません。";
+"settings.default_apps.additional.label" = "追加のアプリケーション";
+"settings.default_apps.additional.description" = "一覧にないアプリケーションは、名前または Bundle 識別子をカンマ区切りで入力します。";
 "settings.behavior.section" = "動作";
 "settings.behavior.description" = "セッションモードでは、一覧にないユーザーインターフェイスアプリケーションを通常の方法で終了し、無効にすると再び開きます。すべてクリーンアップではセッションを保持せずにアプリケーションを終了します。保存されていない書類があると終了できない場合があります。";
 "settings.protected.section" = "常に保護";
-"settings.protected.description" = "システムプロセス、バックグラウンドエージェント、ESET、FortiClient は終了しません。";
+"settings.protected.description" = "システムプロセスとバックグラウンドエージェントは終了しません。";
 "profile.general" = "一般";
 "profile.new" = "新規プロファイル";

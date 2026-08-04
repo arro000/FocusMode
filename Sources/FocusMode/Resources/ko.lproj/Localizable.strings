@@ -24,9 +24,15 @@
 "settings.profile.name.placeholder" = "프로파일 이름";
 "settings.open_apps.label" = "열어 둘 앱";
 "settings.open_apps.description" = "앱 이름 또는 번들 식별자를 쉼표로 구분하여 입력하십시오. 대소문자는 구분하지 않습니다.";
+"settings.default_apps.section" = "기본 보호 앱";
+"settings.default_apps.description" = "모든 프로파일에서 열어 둘 앱을 선택하십시오. 목록에는 이 Mac에서 찾은 앱이 포함됩니다.";
+"settings.default_apps.search" = "앱 검색";
+"settings.default_apps.empty" = "검색과 일치하는 앱이 없습니다.";
+"settings.default_apps.additional.label" = "추가 앱";
+"settings.default_apps.additional.description" = "목록에 없는 앱은 이름 또는 번들 식별자를 쉼표로 구분하여 입력하십시오.";
 "settings.behavior.section" = "동작";
 "settings.behavior.description" = "세션 모드는 목록에 없는 사용자 인터페이스 앱을 정상적으로 종료하고 비활성화할 때 다시 엽니다. 모두 정리는 세션을 보존하지 않고 앱을 닫습니다. 저장하지 않은 문서가 있으면 앱이 닫히지 않을 수 있습니다.";
 "settings.protected.section" = "항상 보호됨";
-"settings.protected.description" = "시스템 프로세스, 백그라운드 에이전트, ESET 및 FortiClient는 종료하지 않습니다.";
+"settings.protected.description" = "시스템 프로세스와 백그라운드 에이전트는 종료하지 않습니다.";
 "profile.general" = "일반";
 "profile.new" = "새 프로파일";
