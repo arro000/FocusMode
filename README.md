@@ -26,6 +26,13 @@ No accounts. No analytics. No background service. Everything stays on your Mac.
 - **Native and lightweight**: built with SwiftUI and AppKit, with no third-party dependencies.
 - **Localized**: English, Italian, Spanish, French, German, Portuguese, Simplified Chinese, Japanese, and Korean.
 
+## Screenshots
+
+<p align="center">
+  <img src="assets/Screenshot%202026-08-04%20at%2014.18.04.png" alt="FocusMode menu bar window" width="373">
+  <img src="assets/Screenshot%202026-08-04%20at%2014.18.28.png" alt="FocusMode settings window" width="782">
+</p>
+
 ## How It Works
 
 1. Choose a profile from the menu bar.
