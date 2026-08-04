@@ -1,0 +1,31 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="100" y1="40" x2="1160" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17162F"/>
+      <stop offset="1" stop-color="#090914"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(975 130) rotate(135) scale(500)">
+      <stop stop-color="#A8FF60" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#A8FF60" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="20" stdDeviation="25" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" rx="36" fill="url(#bg)"/>
+  <rect width="1280" height="640" rx="36" fill="url(#glow)"/>
+  <g opacity=".12" stroke="#E9E8FF">
+    <path d="M0 128H1280M0 256H1280M0 384H1280M0 512H1280"/>
+    <path d="M128 0V640M256 0V640M384 0V640M512 0V640M640 0V640M768 0V640M896 0V640M1024 0V640M1152 0V640"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="230" cy="320" r="118" fill="#211F42" stroke="#A8FF60" stroke-width="3"/>
+    <circle cx="230" cy="320" r="72" stroke="#A8FF60" stroke-width="13" stroke-dasharray="124 20"/>
+    <circle cx="230" cy="320" r="23" fill="#A8FF60"/>
+    <path d="M230 178V217M230 423V462M88 320H127M333 320H372" stroke="#F3F2FF" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="420" y="295" fill="#F5F4FF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="92" font-weight="750" letter-spacing="-4">FocusMode</text>
+  <text x="424" y="362" fill="#B9B6D2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="30" font-weight="450">Clear the noise. Keep your flow.</text>
+  <rect x="424" y="405" width="197" height="42" rx="21" fill="#A8FF60"/>
+  <text x="450" y="433" fill="#111021" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" font-weight="700" letter-spacing="1.5">NATIVE macOS</text>
+</svg>
