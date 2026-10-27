@@ -4,6 +4,10 @@ All notable changes to FocusMode will be documented here. The format follows [Ke
 
 ## [Unreleased]
 
+No changes yet.
+
+## [1.1.1] - 2026-10-27
+
 ### Changed
 
 - Protected applications are now entirely user-defined. FocusMode no longer ships built-in third-party defaults, and macOS system apps remain protected automatically.
