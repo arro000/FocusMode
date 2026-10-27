@@ -58,72 +58,6 @@ final class PerformanceManager: ObservableObject {
         static let defaultExclusionsText = "focusModeDefaultExclusionsText"
     }
 
-    private static let builtInProtectedApplications: [ProtectedApplication] = [
-        ProtectedApplication(
-            id: "com.apple.finder",
-            name: "Finder",
-            bundleIdentifier: "com.apple.finder",
-            url: nil,
-            matchingIdentifiers: ["com.apple.finder", "finder"]
-        ),
-        ProtectedApplication(
-            id: "org.mozilla.firefox",
-            name: "Firefox",
-            bundleIdentifier: "org.mozilla.firefox",
-            url: nil,
-            matchingIdentifiers: ["org.mozilla.firefox", "firefox"]
-        ),
-        ProtectedApplication(
-            id: "net.kovidgoyal.kitty",
-            name: "kitty",
-            bundleIdentifier: "net.kovidgoyal.kitty",
-            url: nil,
-            matchingIdentifiers: ["net.kovidgoyal.kitty", "kitty"]
-        ),
-        ProtectedApplication(
-            id: "com.microsoft.teams2",
-            name: "Microsoft Teams",
-            bundleIdentifier: "com.microsoft.teams2",
-            url: nil,
-            matchingIdentifiers: ["com.microsoft.teams2", "com.microsoft.teams", "msteams", "microsoft teams"]
-        ),
-        ProtectedApplication(
-            id: "com.eset.endpointsecurity",
-            name: "ESET Endpoint Security",
-            bundleIdentifier: "com.eset.endpointsecurity",
-            url: nil,
-            matchingIdentifiers: ["com.eset.endpointsecurity", "eset endpoint security", "eset endpoint security agent"]
-        ),
-        ProtectedApplication(
-            id: "com.fortinet.forticlient",
-            name: "FortiClient",
-            bundleIdentifier: "com.fortinet.forticlient",
-            url: nil,
-            matchingIdentifiers: ["com.fortinet.forticlient", "forticlient"]
-        ),
-        ProtectedApplication(
-            id: "ollama",
-            name: "Ollama",
-            bundleIdentifier: nil,
-            url: nil,
-            matchingIdentifiers: ["ollama"]
-        ),
-        ProtectedApplication(
-            id: "omlx",
-            name: "omlx",
-            bundleIdentifier: nil,
-            url: nil,
-            matchingIdentifiers: ["omlx"]
-        ),
-        ProtectedApplication(
-            id: "lm studio",
-            name: "LM Studio",
-            bundleIdentifier: nil,
-            url: nil,
-            matchingIdentifiers: ["lm studio"]
-        )
-    ]
-
     private var pendingTerminations: [pid_t: SavedApplication] = [:]
 
     private var savedApplications: [SavedApplication] {
@@ -145,11 +79,10 @@ final class PerformanceManager: ObservableObject {
         isEnabled = UserDefaults.standard.bool(forKey: StorageKey.isEnabled)
         let defaults = UserDefaults.standard
         defaultProtectedApplicationIDs = Set(
-            defaults.stringArray(forKey: StorageKey.defaultProtectedApplications)
-                ?? Self.builtInProtectedApplications.map(\.id)
+            defaults.stringArray(forKey: StorageKey.defaultProtectedApplications) ?? []
         )
         defaultExclusionsText = defaults.string(forKey: StorageKey.defaultExclusionsText) ?? ""
-        availableApplications = Self.builtInProtectedApplications
+        availableApplications = []
 
         let savedData = UserDefaults.standard.data(forKey: StorageKey.savedApplications)
         let restoredApplications = (savedData.flatMap { try? JSONDecoder().decode([SavedApplication].self, from: $0) }) ?? []
@@ -268,7 +201,7 @@ final class PerformanceManager: ObservableObject {
     }
 
     func refreshAvailableApplications() {
-        var applications = Self.builtInProtectedApplications
+        var applications: [ProtectedApplication] = []
         let applicationDirectories = [
             URL(fileURLWithPath: "/Applications"),
             FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Applications")
@@ -304,7 +237,7 @@ final class PerformanceManager: ObservableObject {
     }
 
     func setDefaultProtected(_ isProtected: Bool, for applicationID: String) {
-        guard !isEnabled, availableApplications.contains(where: { $0.id == applicationID }) else {
+        guard !isEnabled else {
             return
         }
 
@@ -457,6 +390,12 @@ final class PerformanceManager: ObservableObject {
             return false
         }
 
+        // System applications stay open regardless of the user's configuration.
+        if application.bundleIdentifier == "com.apple.finder"
+            || application.bundleURL?.path.hasPrefix("/System/") == true {
+            return false
+        }
+
         let identifiers = [application.bundleIdentifier, application.localizedName]
             .compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
 
@@ -528,22 +467,6 @@ final class PerformanceManager: ObservableObject {
             ?? bundle.infoDictionary?["CFBundleDisplayName"] as? String
             ?? bundle.infoDictionary?["CFBundleName"] as? String
             ?? url.deletingPathExtension().lastPathComponent
-        let normalizedName = name.lowercased()
-        if let knownApplication = Self.builtInProtectedApplications.first(where: {
-            $0.matchingIdentifiers.contains(normalizedIdentifier)
-                || $0.matchingIdentifiers.contains(normalizedName)
-        }),
-           let knownIndex = applications.firstIndex(where: { $0.id == knownApplication.id }) {
-            let known = applications[knownIndex]
-            applications[knownIndex] = ProtectedApplication(
-                id: known.id,
-                name: known.name,
-                bundleIdentifier: bundleIdentifier,
-                url: url,
-                matchingIdentifiers: known.matchingIdentifiers
-            )
-            return
-        }
 
         if applications.contains(where: { $0.id.caseInsensitiveCompare(bundleIdentifier) == .orderedSame }) {
             return

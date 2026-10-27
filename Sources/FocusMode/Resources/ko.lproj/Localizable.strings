@@ -24,8 +24,8 @@
 "settings.profile.name.placeholder" = "프로파일 이름";
 "settings.open_apps.label" = "열어 둘 앱";
 "settings.open_apps.description" = "앱 이름 또는 번들 식별자를 쉼표로 구분하여 입력하십시오. 대소문자는 구분하지 않습니다.";
-"settings.default_apps.section" = "기본 보호 앱";
-"settings.default_apps.description" = "모든 프로파일에서 열어 둘 앱을 선택하십시오. 목록에는 이 Mac에서 찾은 앱이 포함됩니다.";
+"settings.default_apps.section" = "모든 프로파일에서 보호";
+"settings.default_apps.description" = "모든 프로파일에서 열어 둘 앱을 선택하십시오. 목록은 비어 있는 상태로 시작하며 이 Mac에서 찾은 앱이 포함됩니다.";
 "settings.default_apps.search" = "앱 검색";
 "settings.default_apps.empty" = "검색과 일치하는 앱이 없습니다.";
 "settings.default_apps.selected" = "선택한 앱";

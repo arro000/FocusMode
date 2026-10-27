@@ -24,8 +24,8 @@
 "settings.profile.name.placeholder" = "Nombre del perfil";
 "settings.open_apps.label" = "Aplicaciones que deben permanecer abiertas";
 "settings.open_apps.description" = "Introduce nombres de aplicaciones o identificadores de paquete separados por comas. La comparación no distingue mayúsculas y minúsculas.";
-"settings.default_apps.section" = "Aplicaciones protegidas por defecto";
-"settings.default_apps.description" = "Elige las aplicaciones que deben permanecer abiertas en todos los perfiles. La lista incluye las aplicaciones encontradas en este Mac.";
+"settings.default_apps.section" = "Protegidas en todos los perfiles";
+"settings.default_apps.description" = "Elige las aplicaciones que deben permanecer abiertas en todos los perfiles. La lista empieza vacía e incluye las aplicaciones encontradas en este Mac.";
 "settings.default_apps.search" = "Buscar aplicaciones";
 "settings.default_apps.empty" = "Ninguna aplicación coincide con la búsqueda.";
 "settings.default_apps.selected" = "Aplicaciones seleccionadas";

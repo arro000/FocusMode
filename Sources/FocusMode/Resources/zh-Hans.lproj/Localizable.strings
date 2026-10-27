@@ -24,8 +24,8 @@
 "settings.profile.name.placeholder" = "配置文件名称";
 "settings.open_apps.label" = "保持打开的应用程序";
 "settings.open_apps.description" = "输入应用程序名称或 Bundle 标识符，以逗号分隔。匹配不区分大小写。";
-"settings.default_apps.section" = "默认受保护的应用程序";
-"settings.default_apps.description" = "选择在所有配置文件中保持打开的应用程序。列表包含在此 Mac 上找到的应用程序。";
+"settings.default_apps.section" = "在所有配置文件中受保护";
+"settings.default_apps.description" = "选择在所有配置文件中保持打开的应用程序。列表初始为空，并包含在此 Mac 上找到的应用程序。";
 "settings.default_apps.search" = "搜索应用程序";
 "settings.default_apps.empty" = "没有符合搜索条件的应用程序。";
 "settings.default_apps.selected" = "已选择的应用程序";

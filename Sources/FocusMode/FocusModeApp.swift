@@ -352,10 +352,10 @@ struct SettingsView: View {
 
     private var defaultSettings: some View {
         Form {
-            Section(L10n.string("settings.default_apps.section", defaultValue: "Default protected applications")) {
+            Section(L10n.string("settings.default_apps.section", defaultValue: "Protected in every profile")) {
                 Text(L10n.string(
                     "settings.default_apps.description",
-                    defaultValue: "Choose the applications that should stay open in every profile. The list includes applications found on this Mac."
+                    defaultValue: "Choose the applications that should stay open in every profile. The list starts empty and is filled with applications found on this Mac."
                 ))
                 .font(.caption)
                 .foregroundStyle(.secondary)

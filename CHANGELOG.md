@@ -4,7 +4,10 @@ All notable changes to FocusMode will be documented here. The format follows [Ke
 
 ## [Unreleased]
 
-No changes yet.
+### Changed
+
+- Protected applications are now entirely user-defined. FocusMode no longer ships built-in third-party defaults, and macOS system apps remain protected automatically.
+- Removed outdated screenshots from the README.
 
 ## [1.1.0] - 2026-08-04
 
@@ -16,7 +19,7 @@ No changes yet.
 ### Changed
 
 - Rebranded the application and package as FocusMode.
-- Selected applications are grouped at the top of profile and default protection lists.
+- Selected applications are grouped at the top of profile and global protection lists.
 - Added a visual separator and localized label for selected applications.
 - CI now runs the test suite with code coverage enabled.
 
@@ -32,4 +35,4 @@ No changes yet.
 - One-shot cleanup without session retention.
 - Configurable exclusion profiles.
 - Localizations for nine languages.
-- Default protection for system, workspace, local AI, and security applications.
+- User-configurable protection for applications that should stay open.

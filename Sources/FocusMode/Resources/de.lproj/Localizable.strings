@@ -24,8 +24,8 @@
 "settings.profile.name.placeholder" = "Profilname";
 "settings.open_apps.label" = "Geöffnete Apps beibehalten";
 "settings.open_apps.description" = "Gib App-Namen oder Bundle-Identifier durch Kommas getrennt ein. Groß- und Kleinschreibung wird ignoriert.";
-"settings.default_apps.section" = "Standardmäßig geschützte Apps";
-"settings.default_apps.description" = "Wähle die Apps aus, die in jedem Profil geöffnet bleiben sollen. Die Liste enthält Apps, die auf diesem Mac gefunden wurden.";
+"settings.default_apps.section" = "In allen Profilen geschützt";
+"settings.default_apps.description" = "Wähle die Apps aus, die in jedem Profil geöffnet bleiben sollen. Die Liste startet leer und enthält Apps, die auf diesem Mac gefunden wurden.";
 "settings.default_apps.search" = "Apps suchen";
 "settings.default_apps.empty" = "Keine Apps entsprechen der Suche.";
 "settings.default_apps.selected" = "Ausgewählte Apps";

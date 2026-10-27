@@ -11,7 +11,7 @@
 
 ## Why FocusMode?
 
-A busy desktop quietly consumes memory, battery, and attention. FocusMode politely closes the apps you do not need, remembers the ones that actually quit, and brings them back later. It is particularly useful before deep-work sessions, local AI workloads, builds, streaming, or anything else that deserves the whole machine.
+A busy desktop quietly consumes memory, battery, and attention. FocusMode politely closes the apps you do not need, remembers the ones that actually quit, and brings them back later. It is particularly useful before deep-work sessions, builds, presentations, or anything else that deserves the whole machine.
 
 No accounts. No analytics. No background service. Everything stays on your Mac.
 
@@ -19,19 +19,12 @@ No accounts. No analytics. No background service. Everything stays on your Mac.
 
 - **One-click focus sessions**: close eligible apps and save a restorable session.
 - **Reliable restoration**: reopen only the apps that accepted the quit request.
-- **Reusable profiles**: keep a different set of apps open for coding, writing, meetings, or local AI.
+- **Reusable profiles**: keep a different set of apps open for coding, writing, meetings, or any other kind of work.
 - **Quick cleanup**: close apps without retaining a session when you want a clean slate.
 - **Safe by design**: uses the standard macOS quit request and never force-quits an app.
-- **System-aware**: ignores background agents and protects Finder, security tools, and configured essentials.
+- **System-aware**: ignores background agents and macOS system apps, and protects only the apps you choose.
 - **Native and lightweight**: built with SwiftUI and AppKit, with no third-party dependencies.
 - **Localized**: English, Italian, Spanish, French, German, Portuguese, Simplified Chinese, Japanese, and Korean.
-
-## Screenshots
-
-<p align="center">
-  <img src="assets/Screenshot%202026-08-04%20at%2014.18.04.png" alt="FocusMode menu bar window" width="373">
-  <img src="assets/Screenshot%202026-08-04%20at%2014.18.28.png" alt="FocusMode settings window" width="782">
-</p>
 
 ## How It Works
 
@@ -85,17 +78,9 @@ Release bundles are ad-hoc signed but not Apple-notarized, so Gatekeeper may req
 
 ## Profiles And Exclusions
 
-Open **Settings** and add app names or bundle identifiers separated by commas. Matching is case-insensitive. The selected profile is applied when the next focus session starts.
+Open **Settings** and choose the applications to keep open for each profile. You can also add app names or bundle identifiers separated by commas; matching is case-insensitive. The selected profile is applied when the next focus session starts.
 
-FocusMode protects these apps by default:
-
-| Category | Apps |
-| --- | --- |
-| Workspace | Finder, Firefox, kitty, Microsoft Teams |
-| Local AI | Ollama, omlx, LM Studio |
-| Security | ESET Endpoint Security, FortiClient |
-
-Only apps with a regular user interface are considered for closure. macOS services and background agents are ignored.
+FocusMode does not preselect any applications. Applications protected in every profile apply to all profiles, while each profile can also keep its own list. Only apps with a regular user interface are considered for closure. macOS system apps and background agents are always left running.
 
 ## Privacy And Safety
 

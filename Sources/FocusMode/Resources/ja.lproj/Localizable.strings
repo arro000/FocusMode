@@ -24,8 +24,8 @@
 "settings.profile.name.placeholder" = "プロファイル名";
 "settings.open_apps.label" = "開いたままにするアプリケーション";
 "settings.open_apps.description" = "アプリケーション名または Bundle 識別子をカンマ区切りで入力します。大文字と小文字は区別されません。";
-"settings.default_apps.section" = "デフォルトで保護するアプリケーション";
-"settings.default_apps.description" = "すべてのプロファイルで開いたままにするアプリケーションを選択します。このリストにはこの Mac で見つかったアプリケーションが含まれます。";
+"settings.default_apps.section" = "すべてのプロファイルで保護";
+"settings.default_apps.description" = "すべてのプロファイルで開いたままにするアプリケーションを選択します。リストは空の状態から始まり、この Mac で見つかったアプリケーションが含まれます。";
 "settings.default_apps.search" = "アプリケーションを検索";
 "settings.default_apps.empty" = "検索に一致するアプリケーションはありません。";
 "settings.default_apps.selected" = "選択したアプリケーション";

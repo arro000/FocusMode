@@ -36,15 +36,14 @@ final class PerformanceManagerTests: XCTestCase {
         super.tearDown()
     }
 
-    func testInitializesGeneralProfileAndBuiltInProtectedApplications() {
+    func testInitializesGeneralProfileWithoutDefaultProtectedApplications() {
         let manager = PerformanceManager()
 
         XCTAssertFalse(manager.isEnabled)
         XCTAssertEqual(manager.profiles.count, 1)
         XCTAssertEqual(manager.selectedProfileID, manager.profiles[0].id)
         XCTAssertEqual(manager.selectedProfileName, "General")
-        XCTAssertTrue(manager.availableApplications.contains { $0.id == "com.apple.finder" })
-        XCTAssertTrue(manager.defaultProtectedApplicationIDs.contains("com.apple.finder"))
+        XCTAssertTrue(manager.defaultProtectedApplicationIDs.isEmpty)
     }
 
     func testProfileLifecycleAndSelection() {
@@ -83,7 +82,7 @@ final class PerformanceManagerTests: XCTestCase {
     func testProfileProtectionCanBeSelectedAndDeselected() {
         let manager = PerformanceManager()
         let profileID = manager.selectedProfileID
-        let application = try! XCTUnwrap(manager.availableApplications.first { $0.id == "org.mozilla.firefox" })
+        let application = makeApplication()
 
         XCTAssertFalse(manager.isProfileProtected(application, in: profileID))
         manager.setProfileProtected(true, application: application, in: profileID)
@@ -96,9 +95,9 @@ final class PerformanceManagerTests: XCTestCase {
     func testProfileExclusionsAreCaseInsensitiveAndRemovedWhenDeselected() {
         let manager = PerformanceManager()
         let profileID = manager.selectedProfileID
-        let application = try! XCTUnwrap(manager.availableApplications.first { $0.id == "org.mozilla.firefox" })
+        let application = makeApplication()
 
-        manager.updateProfileExclusions(" FIREFOX, keep-me ", for: profileID)
+        manager.updateProfileExclusions(" EDITOR, keep-me ", for: profileID)
         XCTAssertTrue(manager.isProfileProtected(application, in: profileID))
 
         manager.setProfileProtected(false, application: application, in: profileID)
@@ -107,20 +106,20 @@ final class PerformanceManagerTests: XCTestCase {
 
     func testDefaultProtectionAndCustomExclusionsPersistWhenDisabled() {
         let manager = PerformanceManager()
-        let application = try! XCTUnwrap(manager.availableApplications.first { $0.id == "org.mozilla.firefox" })
+        let application = makeApplication()
 
-        manager.setDefaultProtected(false, for: application.id)
+        manager.setDefaultProtected(true, for: application.id)
         manager.updateDefaultExclusionsText("custom.app")
 
-        XCTAssertFalse(manager.isDefaultProtected(application))
+        XCTAssertTrue(manager.isDefaultProtected(application))
         XCTAssertEqual(manager.defaultExclusionsText, "custom.app")
 
         let reloadedManager = PerformanceManager()
-        XCTAssertFalse(reloadedManager.isDefaultProtected(application))
+        XCTAssertTrue(reloadedManager.isDefaultProtected(application))
         XCTAssertEqual(reloadedManager.defaultExclusionsText, "custom.app")
     }
 
-    func testOperationsAreIgnoredForUnknownProfilesOrApplications() {
+    func testProfileOperationsAreIgnoredForUnknownProfilesOrApplications() {
         let manager = PerformanceManager()
         let unknownProfileID = UUID()
         let unknownApplication = ProtectedApplication(
@@ -135,11 +134,9 @@ final class PerformanceManagerTests: XCTestCase {
         manager.updateProfileName("Ignored", for: unknownProfileID)
         manager.updateProfileExclusions("Ignored", for: unknownProfileID)
         manager.setProfileProtected(true, application: unknownApplication, in: unknownProfileID)
-        manager.setDefaultProtected(true, for: unknownApplication.id)
 
         XCTAssertEqual(manager.profiles.count, 1)
         XCTAssertEqual(manager.profiles[0].name, "General")
-        XCTAssertFalse(manager.defaultProtectedApplicationIDs.contains(unknownApplication.id))
         XCTAssertFalse(manager.isProfileProtected(unknownApplication, in: unknownProfileID))
     }
 
@@ -227,10 +224,11 @@ final class PerformanceManagerTests: XCTestCase {
     }
 
     func testOperationsThatRequireDisabledModeAreIgnoredWhenEnabled() {
+        let application = makeApplication()
+        UserDefaults.standard.set([application.id], forKey: "focusModeDefaultProtectedApplications")
         UserDefaults.standard.set(true, forKey: "isUltraPerformanceModeEnabled")
         let manager = PerformanceManager()
         let originalProfileID = manager.selectedProfileID
-        let application = try! XCTUnwrap(manager.availableApplications.first { $0.id == "org.mozilla.firefox" })
 
         manager.addProfile()
         let addedProfileID = manager.profiles.last!.id
@@ -247,14 +245,16 @@ final class PerformanceManagerTests: XCTestCase {
 
     func testDefaultProtectionCanBeEnabledAndDisabled() {
         let manager = PerformanceManager()
-        let application = try! XCTUnwrap(manager.availableApplications.first { $0.id == "org.mozilla.firefox" })
+        let application = makeApplication()
+
+        XCTAssertFalse(manager.isDefaultProtected(application))
 
         manager.setDefaultProtected(true, for: application.id)
         XCTAssertTrue(manager.isDefaultProtected(application))
 
         manager.setDefaultProtected(false, for: application.id)
         XCTAssertFalse(manager.isDefaultProtected(application))
-        XCTAssertEqual(UserDefaults.standard.stringArray(forKey: "focusModeDefaultProtectedApplications"), ["com.apple.finder", "net.kovidgoyal.kitty", "ollama", "omlx", "com.eset.endpointsecurity", "com.fortinet.forticlient", "com.microsoft.teams2", "lm studio"].sorted())
+        XCTAssertEqual(UserDefaults.standard.stringArray(forKey: "focusModeDefaultProtectedApplications"), [])
     }
 
     func testDeletingTheFirstSelectedProfileSelectsTheNewFirstProfile() {
@@ -286,6 +286,16 @@ final class PerformanceManagerTests: XCTestCase {
         let manager = PerformanceManager()
 
         XCTAssertGreaterThanOrEqual(manager.applicationsToCloseCount, 0)
+    }
+
+    private func makeApplication() -> ProtectedApplication {
+        ProtectedApplication(
+            id: "com.example.editor",
+            name: "Editor",
+            bundleIdentifier: "com.example.editor",
+            url: nil,
+            matchingIdentifiers: ["com.example.editor", "editor"]
+        )
     }
 
 }
